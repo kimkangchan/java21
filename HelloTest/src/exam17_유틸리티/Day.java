@@ -1,0 +1,5 @@
+package exam17_유틸리티;
+
+public enum Day {
+	SUNDAY,MONDAY,TUSEDAY,WENDSEDAY,THURSDAY,FRIDAY,SATURDAY;
+}

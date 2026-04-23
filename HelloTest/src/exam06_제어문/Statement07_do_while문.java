@@ -1,0 +1,25 @@
+package exam06_제어문;
+
+public class Statement07_do_while문 {
+
+	public static void main(String[] args) {
+
+		for (int n = 1; n < 6; n++) {
+			System.out.println("hello" + n);
+		}
+		System.out.println("================");
+
+		int n2 = 1;
+		while (n2 <= 5) {
+			System.out.println("world");
+			n2++;
+		}
+		System.out.println("================");
+		int n3 = 1;
+		do {
+			System.out.println("happy" + n3);
+			n3 += 1;
+		} while (n3 <= 5);
+	}
+
+}

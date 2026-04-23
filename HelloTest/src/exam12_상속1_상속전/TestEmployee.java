@@ -1,0 +1,14 @@
+package exam12_상속1_상속전;
+
+public class TestEmployee {
+
+	public static void main(String[] args) {
+		
+		Manager m = new Manager("홍길동",2000,"인사");
+		Engineer e = new Engineer("유관순",1800,"자바");
+		
+		System.out.println(m.getManger());
+		System.out.println(e.getEngineer());
+	}
+
+}

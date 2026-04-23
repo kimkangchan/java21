@@ -1,0 +1,19 @@
+package workshop;
+
+public class MyTest03 {
+
+	public static void main(String[] args) {
+		
+		int n = 10;
+		int n2 = 20;
+		
+		n = n2;
+		n2 = n-10;
+		
+		System.out.println("n값은 "+n);
+		System.out.println("n값은 "+n2);
+		
+
+	}
+
+}
