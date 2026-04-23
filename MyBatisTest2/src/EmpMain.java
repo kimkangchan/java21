@@ -51,7 +51,18 @@ public class EmpMain {
 		dto3.setEmpno(9000);
 		int n= session.update("com.config.EmpMapper.updateIf",dto3);
 		System.out.println(n+"개가 수정됨");
+		
+		//choose
+		
+		EmpDTO dto4 = new EmpDTO();
+		dto4.setJob("CLERK");
+		List<EmpDTO> list7 = session.selectList("com.config.EmpMapper.selectChoose", dto4);
+		System.out.println(list7);
+		System.out.println(list7.size());
 
+		
+		int t = session.selectOne("com.config.EmpMapper.singleColumn");
+		System.out.println(t);
 		session.commit();
 		session.close();
 

@@ -58,4 +58,28 @@
 				sal = #{sal}
 			</if>
 		</set> where empno = #{empno} </update>
+
+	<!-- choose-->
+	<select id="selectChoose" parameterType="EmpDTO" resultType="EmpDTO"> select
+		empno, ename, job from emp <where>
+			<choose>
+				<when test="job=='SALESMAN'">
+					sal > 1500
+				</when>
+				<when test="job=='CLERK'">
+					sal > 2500
+				</when>
+				<otherwise>
+					sal &gt; 3000
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+
+
+	<!-- 단일컬럼-->
+	<select id="singleColumn" resultType="int">
+		select count(*)
+		from emp
+	</select>
 </mapper>
