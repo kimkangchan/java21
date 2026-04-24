@@ -1,4 +1,4 @@
-package p1;
+package p2;
 
 import org.apache.ibatis.type.Alias;
 
@@ -6,22 +6,19 @@ import org.apache.ibatis.type.Alias;
 public class EmpDTO {
 
 	int empno;
-	String ename; 
+	String ename;
 	String job;
 	int mgr;
 	String hiredate;
-	int sal; 
-	int comm; 
+	int sal;
+	int comm;
 	int deptno;
-	
-	DeptDTO dto;
 
 	public EmpDTO() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public EmpDTO(int empno, String ename, String job, int mgr, String hiredate, int sal, int comm, int deptno,
-			DeptDTO dto) {
+	public EmpDTO(int empno, String ename, String job, int mgr, String hiredate, int sal, int comm, int deptno) {
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
@@ -30,7 +27,6 @@ public class EmpDTO {
 		this.sal = sal;
 		this.comm = comm;
 		this.deptno = deptno;
-		this.dto = dto;
 	}
 
 	public int getEmpno() {
@@ -97,19 +93,10 @@ public class EmpDTO {
 		this.deptno = deptno;
 	}
 
-	public DeptDTO getDto() {
-		return dto;
-	}
-
-	public void setDto(DeptDTO dto) {
-		this.dto = dto;
-	}
-
 	@Override
 	public String toString() {
 		return "EmpDTO [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate="
-				+ hiredate + ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + ", dto=" + dto + "]";
+				+ hiredate + ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
 	}
-	
-	
+
 }
