@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -42,30 +43,37 @@ public class EmpMain {
 //		System.out.println(list6.size());
 		
 		//update+조건
-		EmpDTO dto3 = new EmpDTO();
-		dto3.setMgr(7902);
+//		EmpDTO dto3 = new EmpDTO();
+//		dto3.setMgr(7902);
+//
+//		dto3.setEname("이순신");
+//		dto3.setSal(800);
+//
+//		dto3.setEmpno(9000);
+//		int n= session.update("com.config.EmpMapper.updateIf",dto3);
+//		System.out.println(n+"개가 수정됨");
+//		
+//		//choose
+//		
+//		EmpDTO dto4 = new EmpDTO();
+//		dto4.setJob("CLERK");
+//		List<EmpDTO> list7 = session.selectList("com.config.EmpMapper.selectChoose", dto4);
+//		System.out.println(list7);
+//		System.out.println(list7.size());
+//
+//		
+//		int t = session.selectOne("com.config.EmpMapper.singleColumn");
+//		System.out.println(t);
+//		session.commit();
+//		session.close();
 
-		dto3.setEname("이순신");
-		dto3.setSal(800);
-
-		dto3.setEmpno(9000);
-		int n= session.update("com.config.EmpMapper.updateIf",dto3);
-		System.out.println(n+"개가 수정됨");
+		int curPage = 2;
+		int perPage = 3;
+		int offset = (curPage -1) * perPage; // 시작위치
 		
-		//choose
+		List<EmpDTO> list8 = session.selectList("com.config.EmpMapper.paging",null,new RowBounds(offset,perPage));
 		
-		EmpDTO dto4 = new EmpDTO();
-		dto4.setJob("CLERK");
-		List<EmpDTO> list7 = session.selectList("com.config.EmpMapper.selectChoose", dto4);
-		System.out.println(list7);
-		System.out.println(list7.size());
-
-		
-		int t = session.selectOne("com.config.EmpMapper.singleColumn");
-		System.out.println(t);
-		session.commit();
-		session.close();
-
+		System.out.println(list8);
 	}
 
 }
