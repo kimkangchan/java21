@@ -6,9 +6,13 @@ Java 21 기초부터 DB 연동까지 단계별로 학습한 스터디 레포지�
 
 | 프로젝트 | 내용 |
 |---|---|
-| [HelloTest](./HelloTest) | Java 21 기초 문법 |
-| [JdbcTest](./JdbcTest) | JDBC를 이용한 DB 연동 |
-| [MyBatisTest](./MyBatisTest) | MyBatis를 이용한 DB 연동 |
+| [HelloTest](#hellotest) | Java 21 기초 문법 |
+| [JdbcTest](#jdbctest) | JDBC를 이용한 Oracle DB 연동 |
+| [MyBatisTest](#mybatistest) | MyBatis 기초 – 단건/다중행 CRUD, XML 매퍼 |
+| [MyBatisTest2](#mybatistest2) | MyBatis 심화 – foreach, 동적 SQL, RowBounds 페이징 |
+| [MyBatisTest3](#mybatistest3) | MyBatis – resultMap 활용 |
+| [MyBatisTest4](#mybatistest4) | MyBatis – JOIN (1:1 / 1:N 매핑) |
+| [MyBatisTest5](#mybatistest5) | MyBatis – DAO / Service 패턴 통합 프로젝트 |
 
 ---
 
@@ -51,23 +55,70 @@ JDBC를 직접 사용하여 Oracle DB와 연동하는 방법을 학습합니다.
 |---|---|
 | exam1 | JDBC 기본 CRUD (Insert, Select, Update, Delete, Transaction) |
 | exam2_select | DAO / Service 패턴으로 Select 구현 |
-| exam2_insert | DAO / Service 패턴으로 Insert 구현 |
+| exam2_insert | DAO / Service 패턴으로 Insert 구현 (중복 예외 처리 포함) |
 | exam2_update | DAO / Service 패턴으로 Update 구현 |
-| exam2_delete | DAO / Service 패턴으로 Delete 구현 |
-| exam2_finalproject | CRUD 통합 프로젝트 |
+| exam2_delete | DAO / Service 패턴으로 Delete 구현 (RecordNotFoundException 처리) |
+| exam2_finalproject | CRUD 통합 프로젝트 (커스텀 예외 2종 포함) |
 | workshop1 | Student CRUD 실습 |
 
 ---
 
 ## MyBatisTest
 
-MyBatis 프레임워크를 사용하여 DB 연동을 학습합니다.
+MyBatis 프레임워크를 이용한 기본 DB 연동을 학습합니다.
+
+| 클래스 / 설정 | 주제 |
+|---|---|
+| com/config | SqlSessionFactory 설정, DeptMapper XML (다중 매퍼 파일 포함) |
+| com/dto/DeptDTO | Dept 테이블 DTO |
+| DeptMain | 단건 조회(DTO / Map 파라미터), 다중행 조회, Insert / Update / Delete, 동적 WHERE (`&lt;` 비교) |
+
+---
+
+## MyBatisTest2
+
+MyBatis 동적 SQL과 페이징 처리를 학습합니다.
+
+| 주제 | 내용 |
+|---|---|
+| `<foreach>` | 다중 Insert / 다중 Delete / 다중 Select (IN 절) |
+| `<if>` / `<where>` | 조건부 SELECT, 조건부 UPDATE |
+| `<choose>` | Java switch 분기에 해당하는 조건 분기 |
+| RowBounds 페이징 | offset / limit 기반 페이징 처리 |
+
+---
+
+## MyBatisTest3
+
+MyBatis ResultMap을 활용하여 컬럼명과 필드명이 다를 때 매핑하는 방법을 학습합니다.
+
+| 주제 | 내용 |
+|---|---|
+| `resultType` vs `resultMap` | 컬럼명-필드명 자동 매핑 vs 명시적 매핑 |
+| EmpMapper | findAll (resultType), findByResultMap (resultMap) |
+
+---
+
+## MyBatisTest4
+
+MyBatis를 이용한 테이블 JOIN 결과 매핑을 학습합니다.
 
 | 패키지 | 주제 |
 |---|---|
-| com/config | SqlSessionFactory 설정 |
-| com/dto | DeptDTO |
-| DeptMain | MyBatis CRUD 실행 |
+| p1 | 1:1 JOIN – `EmpDTO` 내부에 `DeptDTO` 필드를 포함하는 association 매핑 |
+| p2 | 1:N JOIN – `DeptDTO` 내부에 `List<EmpDTO>` 를 포함하는 collection 매핑 |
+
+---
+
+## MyBatisTest5
+
+MyBatis + DAO / Service 패턴을 결합한 통합 프로젝트입니다.
+
+| 클래스 | 역할 |
+|---|---|
+| DeptDAO | SqlSession을 이용한 DB 접근 |
+| DeptService / DeptServiceImpl | 비즈니스 로직 분리 |
+| DeptMain | Scanner 기반 콘솔 메뉴 (목록/추가/삭제/수정) |
 
 ---
 
@@ -76,4 +127,4 @@ MyBatis 프레임워크를 사용하여 DB 연동을 학습합니다.
 - Java 21
 - Eclipse IDE
 - Oracle DB
-- MyBatis
+- MyBatis 3.x
